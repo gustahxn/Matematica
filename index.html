@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculadora de Análise Combinatória</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Calculadora de Análise Combinatória</h1>
+      <p class="subtitle">Permutação Simples · Permutação com Repetição · Arranjo Simples · Combinação Simples</p>
+    </header>
+
+    <nav class="tabs">
+      <button class="tab active" data-tab="permutacao-simples">Permutação Simples</button>
+      <button class="tab" data-tab="permutacao-repeticao">Permutação c/ Repetição</button>
+      <button class="tab" data-tab="arranjo-simples">Arranjo Simples</button>
+      <button class="tab" data-tab="combinacao-simples">Combinação Simples</button>
+    </nav>
+
+    <section class="panel active" id="permutacao-simples">
+      <div class="formula-box">
+        <span class="formula">P<sub>n</sub> = n!</span>
+        <p class="formula-desc">Número de maneiras de ordenar <em>n</em> elementos distintos.</p>
+      </div>
+      <div class="inputs">
+        <label>
+          <span>n (total de elementos)</span>
+          <input type="number" id="ps-n" min="0" max="20" placeholder="Ex: 5" />
+        </label>
+      </div>
+      <button class="btn-calc" onclick="calcPermutacaoSimples()">Calcular</button>
+      <div class="result" id="ps-result"></div>
+      <div class="steps" id="ps-steps"></div>
+    </section>
+
+    <section class="panel" id="permutacao-repeticao">
+      <div class="formula-box">
+        <span class="formula">P<sup>n<sub>1</sub>, n<sub>2</sub>, …</sup><sub>n</sub> = n! / (n<sub>1</sub>! · n<sub>2</sub>! · … · n<sub>k</sub>!)</span>
+        <p class="formula-desc">Ordena <em>n</em> elementos onde existem repetições nos grupos n<sub>1</sub>, n<sub>2</sub>, …</p>
+      </div>
+      <div class="inputs" style="padding-bottom: 12px; border-bottom: 1px solid var(--border); margin-bottom: 16px;">
+        <label>
+          <span>calcular anagrama de palavra (automático)</span>
+          <div style="display: flex; gap: 8px;">
+            <input type="text" id="an-palavra" placeholder="Ex: BANANA" style="flex: 1;" />
+            <button class="btn-calc" onclick="calcAnagrama()" style="padding: 10px 16px;">Calcular</button>
+          </div>
+        </label>
+        <div class="result" id="an-result" style="margin-top: 10px; font-size: 1.1rem;"></div>
+        <div class="steps" id="an-steps"></div>
+      </div>
+
+      <div class="inputs">
+        <label>
+          <span>ou calcule por n (total de elementos)</span>
+          <input type="number" id="pr-n" min="0" max="20" placeholder="Ex: 6" />
+        </label>
+        <label>
+          <span>grupos de repetição (separados por vírgula)</span>
+          <input type="text" id="pr-grupos" placeholder="Ex: 2, 2" />
+        </label>
+      </div>
+      <button class="btn-calc" onclick="calcPermutacaoRepeticao()">Calcular</button>
+      <div class="result" id="pr-result"></div>
+      <div class="steps" id="pr-steps"></div>
+    </section>
+
+    <section class="panel" id="arranjo-simples">
+      <div class="formula-box">
+        <span class="formula">A<sup>p</sup><sub>n</sub> = n! / (n − p)!</span>
+        <p class="formula-desc">Número de maneiras de ordenar <em>p</em> elementos escolhidos de <em>n</em> distintos.</p>
+      </div>
+      <div class="inputs">
+        <label>
+          <span>n (total de elementos)</span>
+          <input type="number" id="as-n" min="0" max="20" placeholder="Ex: 5" />
+        </label>
+        <label>
+          <span>p (elementos escolhidos)</span>
+          <input type="number" id="as-p" min="0" max="20" placeholder="Ex: 3" />
+        </label>
+      </div>
+      <button class="btn-calc" onclick="calcArranjoSimples()">Calcular</button>
+      <div class="result" id="as-result"></div>
+      <div class="steps" id="as-steps"></div>
+    </section>
+
+    <section class="panel" id="combinacao-simples">
+      <div class="formula-box">
+        <span class="formula">C<sup>p</sup><sub>n</sub> = n! / (p! · (n − p)!)</span>
+        <p class="formula-desc">Número de subconjuntos de <em>p</em> elementos de um conjunto de <em>n</em> elementos (sem importar a ordem).</p>
+      </div>
+      <div class="inputs">
+        <label>
+          <span>n (total de elementos)</span>
+          <input type="number" id="cs-n" min="0" max="20" placeholder="Ex: 5" />
+        </label>
+        <label>
+          <span>p (elementos escolhidos)</span>
+          <input type="number" id="cs-p" min="0" max="20" placeholder="Ex: 3" />
+        </label>
+      </div>
+      <button class="btn-calc" onclick="calcCombinacaoSimples()">Calcular</button>
+      <div class="result" id="cs-result"></div>
+      <div class="steps" id="cs-steps"></div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
